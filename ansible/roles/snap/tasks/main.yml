@@ -1,0 +1,4 @@
+---
+
+- name: Install Snap
+  apt: name=snap state=latest cache_valid_time={{ aptcachetime }}

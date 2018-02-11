@@ -1,0 +1,10 @@
+---
+
+- name: Add GPG key
+  shell: apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 379CE192D401AB61
+
+- name: add Etcher repo
+  apt_repository: repo='deb https://dl.bintray.com/resin-io/debian stable etcher' state=present
+
+- name: Install etcher
+  apt: name=etcher-electron state=latest update_cache=yes

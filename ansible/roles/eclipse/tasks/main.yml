@@ -1,0 +1,5 @@
+#---
+
+#- name: Download eclipse
+#  get_url: https://www.eclipse.org/downloads/download.php?file=/oomph/epp/oxygen/R2/eclipse-inst-linux32.tar.gz
+#    dest: "{{ ansible_env.HOME }}/eclipse-inst-linux32.tar.gz"

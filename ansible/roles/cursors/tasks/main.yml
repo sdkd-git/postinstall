@@ -1,0 +1,17 @@
+---
+
+- name: Git Clone Numix Cursors
+  git:
+    repo: https://github.com/sdkd-git/Numix-Cursor-Maia.git
+    dest: /tmp/postinstall/Numix-Cursor-Maia
+
+- name: Install Numix Cursor
+  command: sh /tmp/postinstall/Numix-Cursor-Maia/install.sh
+
+- name: Git Clone capitaine Cursors
+  git:
+    repo: https://github.com/keeferrourke/capitaine-cursors.git
+    dest: /tmp/postinstall/capitaine-cursor
+
+- name: Install capitaine Cursors
+  command: cp -pr /tmp/postinstall/capitaine-cursors/dist/ /usr/share/icons/capitaine-cursors

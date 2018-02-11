@@ -1,0 +1,18 @@
+---
+
+ - name: Add Atom repository
+   apt_repository: repo='ppa:webupd8team/java' state=present
+
+ - name: Install Oracle JDK 8
+   apt: name={{ item }} state=latest update_cache=yes
+   with_items:
+     - default-jdk
+     - oracle-java8-installer
+   register: oraclejdk
+
+- name: Setting JAVA_HOME environment
+# Add a line to a file if it does not exist, without passing regexp
+  lineinfile:
+    path: /etc/environment
+    line: 'JAVA_HOME="/usr/lib/jvm/java-8-oracle"'
+    when: oraclejdk.changed

@@ -1,0 +1,20 @@
+---
+- name: Install Docker
+  apt:
+    pkg: docker.io
+    state: latest
+    update_cache: yes
+
+- name: Create Dcoker Group
+  group:
+    name: docker
+    state: present
+
+- name: Add current user to docker group
+  user:
+    name: "{{ ansible_env.SUDO_USER }}"
+    groups: docker
+    append: yes
+
+- name: "Ensure Docker is {{ docker.start | ternary('started','stopped') }}"
+  service: name=docker state={{ docker.start | ternary('restarted','stopped') }} enabled={{ docker.service_enabled }}

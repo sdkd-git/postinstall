@@ -1,0 +1,7 @@
+---
+
+- name: Add Atom repository
+  apt_repository: repo='ppa:webupd8team/atom' state=present
+
+- name: Install Atom text editor
+  apt: name=atom state=latest update_cache=yes

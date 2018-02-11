@@ -1,0 +1,13 @@
+---
+
+
+- name: Disable White dot's on login screen
+  command: "{{ item }}"
+  become: true
+  become_user: lightdm
+  with_items:
+    - xhost +SI:localuser:lightdm
+    - gsettings set com.canonical.unity-greeter draw-grid false
+
+- name: Remove white dots from lock screen
+  command: gsettings set com.canonical.unity-greeter draw-grid false

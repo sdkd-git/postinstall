@@ -1,0 +1,13 @@
+---
+
+- name: Add Conky Manager repository
+  apt_repository:
+    repo: ppa:teejee2008/ppa
+    state: present
+
+
+- name: Install Conky Manager
+  apt:
+    name: conky-manager
+    state: latest
+    update_cache: yes

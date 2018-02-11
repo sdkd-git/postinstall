@@ -1,0 +1,15 @@
+---
+
+- name: add Google Chrome key
+  shell: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+
+- name: add Google Chrome repo
+  apt_repository: repo='deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' state=present
+  when: ansible_architecture=x86_64
+
+- name: Install Google Chrome
+  apt:
+    name: google-chrome-stable
+    state: latest
+    update_cache: yes
+  when: ansible_architecture=x86_64

@@ -1,0 +1,7 @@
+---
+
+- name: Install Gimp
+  apt: name=gimp state=latest
+
+- name: Install inkscape
+  apt: name=inkscape state=latest update_cache=yes cache_valid_time={{ aptcachetime }}

@@ -1,0 +1,13 @@
+---
+
+- name: Add repo for TLP Power Management
+  apt_repository: repo=ppa:linrunner/tlp state=present
+
+- name: Install TLP
+  apt: name={{ item }} state=latest update_cache=yes
+  with_items:
+    - tlp
+    - tlp-rdw
+
+- name: "Ensure TLP is {{ tlp.start | ternary('started','stopped') }}"
+  service: name=tlp state={{ tlp.start | ternary('restarted','stopped') }} enabled={{ tlp.service_enabled }}
