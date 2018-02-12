@@ -7,7 +7,7 @@ LCYAN='\033[1;36m'
 LGRN='\033[1;32m'
 NC='\033[0m' # No Color
 #Variables
-installpkg='ansible git'
+installpkg='ansible git openssh-server'
 ################################################################################
 cat <<"EOF"
                            (   (        ) (
@@ -80,11 +80,8 @@ else
 fi
 ################################################################################
 #Repositories
-# checkansi="$(grep "ansible/ansible" /etc/apt/sources.list)"
-test -f /etc/apt/sources.list.d/ansible-ubuntu-ansible-xenial.list
-if [ $? = 0 ]; then
-  echo -e "${LGRN}Ansible Repository already installed\n"
-else
+ansirepo="/etc/apt/sources.list.d/ansible-ubuntu-ansible-xenial.list"
+if [ ! -f "$checkansi" ]; then
   add-apt-repository -y ppa:ansible/ansible >> $logfile
   echo -e "${LGRN}Ansible Repository added successfully...!${NC}\n"
 fi

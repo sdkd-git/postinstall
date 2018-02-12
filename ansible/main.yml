@@ -9,7 +9,7 @@
       - { role: albert, become: true }
       - { role: audacious, become: true }
       - { role: basic-apps, become: true }
-      - { role: conkymanager, become: true }
+      - { role: conkymanager, become: true, when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'Xenial' }
       - { role: docker-io, become: true }
       - { role: etcher, become: true }
       - { role: google-chrome, become: true }
@@ -27,8 +27,10 @@
       - { role: vlc, become: true }
 # Customizing Ubuntu
       - { role: cursors, become: true }
-      - { role: wdot, become: true }
+      - { role: wdot, become: true, when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'Xenial' }
       - { role: launchermin }
 # IDE
       - { role: vscode, become: true }
       - { role: eclipse, become: true }
+#Sample
+#- { role: debian_stock_config, when: ansible_os_family == 'Debian' }
