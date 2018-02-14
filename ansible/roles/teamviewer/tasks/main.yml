@@ -16,8 +16,8 @@
 
 - name: Install TeamViewer
   apt: deb="https://download.teamviewer.com/download/linux/teamviewer_amd64.deb"
-  when: ansible_architecture == "x86_64"
+  when: ansible_architecture == "x86_64" and teamviewer_check_deb.rc == 1
 
 - name: Install TeamViewer
   apt: deb="https://download.teamviewer.com/download/linux/teamviewer_i386.deb"
-  when: ansible_architecture == "i386"
+  when: teamviewer_check_deb.rc == 1 and ansible_architecture == "i386"
