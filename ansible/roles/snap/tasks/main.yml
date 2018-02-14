@@ -1,4 +1,4 @@
 ---
 
 - name: Install Snap
-  apt: name=snap state=latest cache_valid_time={{ aptcachetime }}
+  apt: name=snap state=latest update_cache=yes cache_valid_time={{ aptcachetime }}

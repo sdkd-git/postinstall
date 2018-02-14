@@ -10,11 +10,11 @@
       - numix-icon-theme-circle
   register: numix_theme
 
-- name: Set GTK theme to Numix
-  command: "gsettings set org.gnome.desktop.interface gtk-theme Numix"
-  become: true
-  become_user: "{{ ansible_env.SUDO_USER  }}"
-  changed_when: numix_theme.changed
-
-- name: Set Icons to Numix circle
-  command: "gsettings set org.gnome.desktop.interface gtk-theme Numix"
+# - name: Set GTK theme to Numix
+#   command: "gsettings set org.gnome.desktop.interface gtk-theme Numix"
+#   become: true
+#   become_user: "{{ ansible_env.SUDO_USER  }}"
+#   changed_when: numix_theme.changed
+#
+# - name: Set Icons to Numix circle
+#   command: "gsettings set org.gnome.desktop.interface gtk-theme Numix"

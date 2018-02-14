@@ -1,18 +1,24 @@
 ---
 
- - name: Add Atom repository
-   apt_repository: repo='ppa:webupd8team/java' state=present
+- name: Add Oracle JDK 8
+  apt_repository: repo='ppa:webupd8team/java' state=present
 
- - name: Install Oracle JDK 8
-   apt: name={{ item }} state=latest update_cache=yes
-   with_items:
-     - default-jdk
-     - oracle-java8-installer
-   register: oraclejdk
+- name: Accept Java 8 License
+  become: yes
+  debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
+
+- name: Install Oracle Java 8
+  become: yes
+  apt: name={{item}} state=latest update_cache=yes
+  with_items:
+    - oracle-java8-installer
+    - ca-certificates
+    - oracle-java8-set-default
+  register: oraclejdk
 
 - name: Setting JAVA_HOME environment
-# Add a line to a file if it does not exist, without passing regexp
   lineinfile:
     path: /etc/environment
-    line: 'JAVA_HOME="/usr/lib/jvm/java-8-oracle"'
-    when: oraclejdk.changed
+    line: JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+    state: present
+  when: oraclejdk|success

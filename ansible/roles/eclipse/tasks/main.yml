@@ -1,5 +1,17 @@
-#---
+---
 
-#- name: Download eclipse
-#  get_url: https://www.eclipse.org/downloads/download.php?file=/oomph/epp/oxygen/R2/eclipse-inst-linux32.tar.gz
-#    dest: "{{ ansible_env.HOME }}/eclipse-inst-linux32.tar.gz"
+# - name: Download Eclipse IDE to HOME
+#   get_url:
+#     url: "{{ eclipse_dwn }}"
+#     dest: "{{ ansible_env.HOME }}"
+#     state: present
+
+- name: Download and extract eclipse 4.6 Oxygen
+  unarchive:
+    src: "{{ eclipse_dwn }}"
+    dest: /usr/local/
+    remote_src: yes
+    state: present
+
+- name: Add Symlink
+  shell: ln -s /usr/local/eclipse/eclipse /usr/local/bin/eclipse

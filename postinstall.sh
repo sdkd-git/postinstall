@@ -81,7 +81,7 @@ fi
 ################################################################################
 #Repositories
 ansirepo="/etc/apt/sources.list.d/ansible-ubuntu-ansible-xenial.list"
-if [ ! -f "$checkansi" ]; then
+if [ ! -f "$ansirepo" ]; then
   add-apt-repository -y ppa:ansible/ansible >> $logfile
   echo -e "${LGRN}Ansible Repository added successfully...!${NC}\n"
 fi
@@ -100,7 +100,7 @@ apt-get install -f -y >> $logfile
 apt-get autoremove -y >> $logfile
 ################################################################################
 echo -e "Starting Ansible Playbook\n"
-ansible-playbook ansible/main.yml | tee -a $logfile
+ansible-playbook ansible/main.yml
 ################################################################################
 #cleaning TemporaryFiles
 echo -e "${YLLO}Cleaning Apt Cache${NC}"

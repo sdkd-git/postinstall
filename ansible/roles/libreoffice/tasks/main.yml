@@ -1,7 +1,7 @@
 ---
 
-- name: Add LibreOffice repository
-  apt_repository: repo='ppa:libreoffice/ppa1' state=present
+- name: Add LibreOffice 6.0 repository
+  apt_repository: repo='ppa:libreoffice/libreoffice-6-0' state=present
 
-- name: Install LibreOffice
+- name: Install LibreOffice 6.0
   apt: name=libreoffice state=latest update_cache=yes

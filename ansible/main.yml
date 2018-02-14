@@ -3,34 +3,37 @@
   - name: Post-Installation Packages and customization of Ubuntu 16.04 64Bit
     user: root
     sudo: true
-    hosts: local
+    hosts: localhost
     roles:
-      - { role: atom, become: true }
-      - { role: albert, become: true }
-      - { role: audacious, become: true }
-      - { role: basic-apps, become: true }
-      - { role: conkymanager, become: true, when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'Xenial' }
-      - { role: docker-io, become: true }
-      - { role: etcher, become: true }
-      - { role: google-chrome, become: true }
-      - { role: gimp-inkscape, become: true }
-      - { role: greenrecorder, become: true }
-      - { role: grub-customizer, become: true }
-      - { role: libreoffice, become: true }
-      - { role: numix, become: true }
-      - { role: ssh, become: true }
-      - { role: snap, become: true }
-      - { role: sublimetext3, become: true }
-      - { role: teamviewer, become: true }
-      - { role: telegram, become: true }
-      - { role: tlp, become: true }
-      - { role: vlc, become: true }
+      # - { role: atom, become: true }
+      # - { role: albert, become: true }
+      # - { role: audacious, become: true }
+      # - { role: basic-apps, become: true }
+      # - { role: conkymanager, become: true,}
+      # - { role: docker-io, become: true }
+      # - { role: etcher, become: true }
+      # - { role: google-chrome, ansible_architecture == 'x86_64', become: true }
+      # - { role: gimp-inkscape, become: true }
+      # - { role: greenrecorder, become: true }
+      # - { role: grub-customizer, become: true }
+      # - { role: libreoffice, become: true }
+      # - { role: numix, become: true }
+      # - { role: ssh, become: true }
+      # - { role: snap, become: true }
+      # - { role: sublimetext3, become: true }
+      # - { role: teamviewer, become: true }
+      # - { role: telegram, become: true }
+      # - { role: tlp, become: true }
+      # - { role: vlc, become: true }
 # Customizing Ubuntu
-      - { role: cursors, become: true }
-      - { role: wdot, become: true, when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'Xenial' }
-      - { role: launchermin }
+      # - { role: cursors, become: true }
+      # - { role: wdot, when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'Xenial', become: true }
+      # - { role: launchermin }
 # IDE
-      - { role: vscode, become: true }
+      # - { role: vscode, become: true }
       - { role: eclipse, become: true }
-#Sample
-#- { role: debian_stock_config, when: ansible_os_family == 'Debian' }
+
+# Programming Lang
+      - { role: oraclejdk, become: true }
+# Media Server
+      # - { role: plexms, become: true }

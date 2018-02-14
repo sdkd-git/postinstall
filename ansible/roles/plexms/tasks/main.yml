@@ -1,0 +1,28 @@
+---
+
+# - name: Add an Apt signing key to a specific keyring file
+#   apt_key:
+#     url: https://downloads.plex.tv/plex-keys/PlexSign.key
+#
+# - name: add Plex Repo
+#   apt_repository: repo='deb https://downloads.plex.tv/repo/deb ./public main ' state=present
+#   when: ansible_architecture=x86_64
+
+- name: install plex dependencies
+  apt: name= "{{ item }}" state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+  with_items:
+    - libavahi-common3
+    - libavahi-core7
+    - libdaemon0
+    - libnss-mdns
+    - libavahi-client3
+    - libavahi-common3
+    - avahi-daemon
+    - avahi-utils
+    - cifs-utils
+
+- name: Install Plex Media Server
+  apt: deb="{{ plex_deb_url }}" state=present force=yes
+
+- name: "Ensure Plex is {{ plex.start | ternary('started','stopped') }}"
+  service: name=plexmediaserver state={{ plex.start | ternary('restarted','stopped') }} enabled={{ plex.service_enabled }}

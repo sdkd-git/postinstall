@@ -1,7 +1,7 @@
 ---
 
-- name: add Etcher repo
+- name: add Greenrecorder repo
   apt_repository: repo='ppa:fossproject/ppa' state=present
 
-- name: Install etcher
+- name: Install Greenrecorder
   apt: name=green-recorder state=latest  update_cache=yes

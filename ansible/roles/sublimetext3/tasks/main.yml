@@ -1,7 +1,13 @@
 ---
 
-- name: add Google Chrome key
-  shell: wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+- name: Add an Apt signing key, uses whichever key is at the URL
+  apt_key:
+    url: https://download.sublimetext.com/sublimehq-pub.gpg
+    state: present
+
+# 
+# - name: add Google Chrome key
+#   shell: wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
 
 - name: add Google Chrome repo
   apt_repository: repo='deb https://download.sublimetext.com/ apt/stable/' state=present

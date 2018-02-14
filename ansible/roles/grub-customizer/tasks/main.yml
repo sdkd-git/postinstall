@@ -1,7 +1,7 @@
 ---
 
-- name: Configure the Grub Customizer PPA
-  apt_repository: repo="ppa:danielrichter2007/grub-customizer" state=present
+- name: Add Grub Customizer Repo
+  apt_repository: repo='ppa:danielrichter2007/grub-customizer' state=present
 
 - name: Install Grub Customizer
-  apt: name=grub-customizer state=latest
+  apt: name=grub-customizer state=latest update_cache=yes

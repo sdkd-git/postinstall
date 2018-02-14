@@ -1,7 +1,7 @@
 ---
 
 - name: Add Telegram Repository
-  apt_repository: repo="ppa:atareao/telegram" state=present
+  apt_repository: repo='ppa:atareao/telegram' state=present
 
 - name: Install Telegram
   apt: name=telegram state=latest update_cache=yes
