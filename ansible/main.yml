@@ -31,9 +31,9 @@
       # - { role: launchermin }
 # IDE
       # - { role: vscode, become: true }
-      - { role: eclipse, become: true }
+      # - { role: eclipse, become: true }
 
 # Programming Lang
-      - { role: oraclejdk, become: true }
+      # - { role: oraclejdk, become: true }
 # Media Server
-      # - { role: plexms, become: true }
+      - { role: plexms, become: true }
