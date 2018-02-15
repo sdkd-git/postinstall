@@ -2,15 +2,4 @@
 
 - name: Installing Basic Packages
   apt: name={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
-  with_items:
-      - vim
-      - curl
-      - iftop
-      - unity-tweak-tool
-      - dconf-editor
-      - ubuntu-restricted-addons
-      - unzip
-      - unrar
-      - ubuntu-restricted-extras
-      - htop
-      - apt-transport-https
+  with_items: "{{ bpkg }}"

@@ -1,0 +1,14 @@
+---
+
+bpkg:
+      - vim
+      - curl
+      - iftop
+      - unity-tweak-tool
+      - dconf-editor
+      - ubuntu-restricted-addons
+      - unzip
+      - unrar
+      - ubuntu-restricted-extras
+      - htop
+      - apt-transport-https
