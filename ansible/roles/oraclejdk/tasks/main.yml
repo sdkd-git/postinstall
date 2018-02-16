@@ -1,7 +1,7 @@
 ---
 
 - name: Add Oracle JDK 8
-  apt_repository: repo='ppa:webupd8team/java' state=absent
+  apt_repository: repo='ppa:webupd8team/java' state=present
 
 - name: Accept Java 8 License
   become: yes
@@ -9,7 +9,7 @@
 
 - name: Install Oracle Java 8
   become: yes
-  apt: name={{item}} state=absent update_cache=yes
+  apt: name={{item}} state=present update_cache=yes
   with_items:
     - oracle-java8-installer
     - ca-certificates
@@ -20,5 +20,5 @@
   lineinfile:
     path: /etc/environment
     line: JAVA_HOME="/usr/lib/jvm/java-8-oracle"
-    state: absent
+    state: present
   when: oraclejdk|success
