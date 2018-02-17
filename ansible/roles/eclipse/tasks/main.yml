@@ -1,12 +1,6 @@
 ---
 
-# - name: Download Eclipse IDE to HOME
-#   get_url:
-#     url: "{{ eclipse_dwn }}"
-#     dest: "{{ ansible_env.HOME }}"
-#     state: present
-
-- name: Download and extract eclipse 4.6 Oxygen
+- name: Download and extract eclipse 4.6 Oxygen Kepler
   unarchive:
     src: "{{ eclipse_dwn }}"
     dest: /usr/local/
