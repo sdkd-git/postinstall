@@ -1,0 +1,4 @@
+---
+
+- name: Install Plex Media Server
+  apt: deb="{{ bleachbit_dwn_url }}" state=present force=yes

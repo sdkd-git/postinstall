@@ -4,7 +4,7 @@
   apt_repository: repo=ppa:linrunner/tlp state=present
 
 - name: Install TLP
-  apt: name={{ item }} state=latest update_cache=yes
+  apt: name={{ item }} state=present update_cache=yes
   with_items:
     - tlp
     - tlp-rdw

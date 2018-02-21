@@ -10,4 +10,4 @@
   apt_repository: repo='deb https://dl.bintray.com/resin-io/debian stable etcher' state=present
 
 - name: Install etcher
-  apt: name=etcher-electron state=latest update_cache=yes
+  apt: name=etcher-electron state=present update_cache=yes

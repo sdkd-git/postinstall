@@ -12,6 +12,7 @@
   git:
     repo: https://github.com/keeferrourke/capitaine-cursors.git
     dest: /tmp/postinstall/capitaine-cursor
+    state: present
 
 - name: Install capitaine Cursors
   command: cp -pr /tmp/postinstall/capitaine-cursors/dist/ /usr/share/icons/capitaine-cursors

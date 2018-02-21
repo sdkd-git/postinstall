@@ -9,5 +9,5 @@
 - name: Install Conky Manager
   apt:
     name: conky-manager
-    state: latest
+    state: present
     update_cache: yes

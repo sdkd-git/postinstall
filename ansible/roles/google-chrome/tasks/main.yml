@@ -11,5 +11,5 @@
 - name: Install Google Chrome
   apt:
     name: google-chrome-stable
-    state: latest
+    state: present
     update_cache: yes

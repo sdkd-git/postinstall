@@ -4,4 +4,4 @@
   apt_repository: repo='ppa:atareao/telegram' state=present
 
 - name: Install Telegram
-  apt: name=telegram state=latest update_cache=yes
+  apt: name=telegram state=present update_cache=yes

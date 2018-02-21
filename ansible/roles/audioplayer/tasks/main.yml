@@ -2,5 +2,6 @@
 
 - name: Install Audaciaous Player
   apt: name=audacious state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+  
 - name: Install Clementine Player
   apt: name=clementine state=latest update_cache=yes cache_valid_time={{ aptcachetime }}

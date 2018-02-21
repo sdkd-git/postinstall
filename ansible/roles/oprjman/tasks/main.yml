@@ -1,0 +1,15 @@
+---
+
+- name: Add openprojectmanager signing key
+  apt_key:
+    url: https://dl.packager.io/srv/opf/openproject-ce/key
+    state: present
+
+- name: add openprojectmanager Repo
+  apt_repository: repo='deb https://dl.packager.io/srv/deb/opf/openproject-ce/stable/7/ubuntu 16.04 main' state=present
+
+- name: install openprojectmanager
+  apt: name=openproject state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+
+- name: openprojectmanager
+  shell: openproject config:set SESSION_STORE=active_record_store

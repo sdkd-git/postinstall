@@ -1,0 +1,7 @@
+---
+
+- name: Add Android Studio repo
+  apt_repository: repo='ppa:maarten-fonville/android-studio' state=present
+
+- name: Install Android studio
+  apt: name=android-studio state=present update_cache=true

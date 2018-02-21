@@ -3,37 +3,48 @@
   - name: Post-Installation Packages and customization of Ubuntu 16.04 64Bit
     user: root
     sudo: true
-    hosts: localhost
+    hosts: local
     roles:
-      # - { role: atom, become: true }
-      # - { role: albert, become: true }
-      # - { role: audacious, become: true }
       # - { role: basic-apps, become: true }
-      # - { role: conkymanager, become: true,}
-      # - { role: docker-io, become: true }
-      # - { role: etcher, become: true }
-      # - { role: google-chrome, ansible_architecture == 'x86_64', become: true }
-      # - { role: gimp-inkscape, become: true }
-      # - { role: greenrecorder, become: true }
-      # - { role: grub-customizer, become: true }
-      # - { role: libreoffice, become: true }
-      # - { role: numix, become: true }
+# Server Tools
       # - { role: ssh, become: true }
-      # - { role: snap, become: true }
-      # - { role: sublimetext3, become: true }
-      # - { role: teamviewer, become: true }
-      # - { role: telegram, become: true }
-      # - { role: tlp, become: true }
-      # - { role: vlc, become: true }
+# Containerization
+      # - { role: docker-io, become: true }
 # Customizing Ubuntu
       # - { role: cursors, become: true }
       # - { role: wdot, when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'Xenial', become: true }
       # - { role: launchermin }
+# Text editors
+      # - { role: atom, become: true }
+      # - { role: sublimetext3, become: true }
 # IDE
       # - { role: vscode, become: true }
       # - { role: eclipse, become: true }
-
-# Programming Lang
-      # - { role: oraclejdk, become: true }
+# Programming/SDK
+      # - { role: oraclejdk8, become: true }
+      # - { role: androidsdk, become: true }
 # Media Server
-      - { role: plexms, become: true }
+      # - { role: plexms, become: true }
+# Project Management
+      # - { role: oprjman, become: true, when: ansible_architecture == 'x86_64' }
+# Desktop/Laptop Utilities
+      # - { role: albert, become: true }
+      # - { role: audioplayer, become: true }
+      # - { role: bleachbit, become: true, when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'Xenial' }
+      # - { role: conkymanager, become: true}
+      # - { role: etcher, become: true }
+      # - { role: greenrecorder, become: true }
+      # - { role: grub-customizer, become: true }
+      # - { role: numix, become: true }
+      # - { role: stacer, become: true }
+      # - { role: teamviewer, become: true }
+      # - { role: vlc, become: true }
+# Internet Utilities
+      # - { role: google-chrome, ansible_architecture == 'x86_64', become: true }
+      # - { role: snap, become: true }
+      # - { role: telegram, become: true }
+# Power Management
+      # - { role: tlp, become: true }
+# Productivity Tools
+      # - { role: gimp-inkscape, become: true }
+      # - { role: libreoffice, become: true }

@@ -4,4 +4,4 @@
   apt_repository: repo='ppa:fossproject/ppa' state=present
 
 - name: Install Greenrecorder
-  apt: name=green-recorder state=latest  update_cache=yes
+  apt: name=green-recorder state=present  update_cache=yes
