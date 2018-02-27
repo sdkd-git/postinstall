@@ -3,16 +3,17 @@
   - name: Post-Installation Packages and customization of Ubuntu 16.04 64Bit
     user: root
     sudo: true
-    hosts: local
+    hosts: localhost
     roles:
       # - { role: basic-apps, become: true }
 # Server Tools
       # - { role: ssh, become: true }
+      # - { role: samba, become: true }
 # Containerization
       # - { role: docker-io, become: true }
 # Customizing Ubuntu
       # - { role: cursors, become: true }
-      # - { role: wdot, when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'Xenial', become: true }
+      # - { role: wdot, ansible_distribution_release == 'Xenial', become: true }
       # - { role: launchermin }
 # Text editors
       # - { role: atom, become: true }
@@ -30,7 +31,7 @@
 # Desktop/Laptop Utilities
       # - { role: albert, become: true }
       # - { role: audioplayer, become: true }
-      # - { role: bleachbit, become: true, when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'Xenial' }
+      # - { role: bleachbit, become: true, ansible_distribution_release == 'Xenial' }
       # - { role: conkymanager, become: true}
       # - { role: etcher, become: true }
       # - { role: greenrecorder, become: true }

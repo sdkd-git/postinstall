@@ -5,5 +5,5 @@
   register: chklmin
 
 - name: Enable Minimise when Clicked on launcher
-  command: gsettings set org.compiz.unityshell:/org/compiz/profiles/unity/plugins/unityshell/ launcher-minimize-window true\
+  command: gsettings set org.compiz.unityshell:/org/compiz/profiles/unity/plugins/unityshell/ launcher-minimize-window true
   when: chklmin == "false"

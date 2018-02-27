@@ -11,5 +11,5 @@
 - name: install openprojectmanager
   apt: name=openproject state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
 
-- name: openprojectmanager
-  shell: openproject config:set SESSION_STORE=active_record_store
+# - name: openprojectmanager
+#   shell: openproject config:set SESSION_STORE=active_record_store

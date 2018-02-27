@@ -9,4 +9,4 @@
   apt_repository: repo='deb https://download.sublimetext.com/ apt/stable/' state=present
 
 - name: Install latest sublime package
-  apt: name=sublime-text state=latest update_cache=yes
+  apt: name=sublime-text state=present update_cache=yes

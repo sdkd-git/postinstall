@@ -80,10 +80,15 @@ else
 fi
 ################################################################################
 #Repositories
-ansirepo="/etc/apt/sources.list.d/ansible-ubuntu-ansible-xenial.list"
-if [ ! -f "$ansirepo" ]; then
+ansirepo="/etc/apt/sources.list.d/"
+ls $ansirepo | grep 'ansible' > /dev/null
+if [ $? != 0 ]; then
+  echo -e "${LGRN}Adding Ansible Repository${NC}\n"
   add-apt-repository -y ppa:ansible/ansible >> $logfile
-  echo -e "${LGRN}Ansible Repository added successfully...!${NC}\n"
+  if [[ $? != 0 ]]; then
+    echo -e "Error occured while adding repo.\n Please check logs for more details."
+    exit 7
+  fi
 fi
 apt-get update >> $logfile
 #Install Packages
@@ -91,7 +96,7 @@ apt-get install $installpkg -y >> $logfile
 if ! [ $? = 0 ];
   then
     echo -e "\n${LGRN} Installation failed for following packages $installpkg ${NC}\n" >&2
-    echo -e "${RED} Stopping further actions..!${NC}\n" >&2
+    echo -e "${RED} Stopping further actions..!${NC}\n Please check logs for more details." >&2
     exit 6
 fi
 #Check dependency packages and forcw install
@@ -107,5 +112,5 @@ echo -e "${YLLO}Cleaning Apt Cache${NC}"
 apt-get -q clean
 echo -e "${LGRN}APT Cache cleaned\n"
 #Exit Message
-echo -e "${LCYAN}Reboot system for applying changes.\n"
-echo -e "${YLLO}Thanks for using the script...!\n"
+# echo -e "${LCYAN}Reboot system for applying changes.\n"
+# echo -e "${YLLO}Thanks for using the script...!\n"

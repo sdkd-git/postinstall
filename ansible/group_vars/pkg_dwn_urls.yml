@@ -1,0 +1,13 @@
+---
+
+#Updated the download URL
+
+bleachbit_dwn_url: https://www.bleachbit.org/download/file/t?file=bleachbit_1.12_all_ubuntu1604.deb
+
+eclipse_dwn: http://ftp.yz.yamagata-u.ac.jp/pub/eclipse/oomph/epp/oxygen/R2/eclipse-inst-linux64.tar.gz
+
+plex_deb_url: https://downloads.plex.tv/plex-media-server/1.10.1.4602-f54242b6b/plexmediaserver_1.10.1.4602-f54242b6b_amd64.deb #CheckSum: b3f40fe8684d708da9c090750a5e3be6f02d8ff8
+
+stacer_dwn_url: https://netix.dl.sourceforge.net/project/stacer/v1.0.8/Stacer_x86_64_v1.0.8.deb
+
+vscode_dwn_url: https://az764295.vo.msecnd.net/stable/c63189deaa8e620f650cc28792b8f5f3363f2c5b/code_1.20.0-1518023590_i386.deb

@@ -1,8 +1,8 @@
 ---
-
 # - name: Add an Apt signing key to a specific keyring file
 #   apt_key:
 #     url: https://downloads.plex.tv/plex-keys/PlexSign.key
+#     state: present
 #
 # - name: add Plex Repo
 #   apt_repository: repo='deb https://downloads.plex.tv/repo/deb ./public main ' state=present
