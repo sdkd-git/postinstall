@@ -2,3 +2,4 @@
 
 - name: Restart SAMBA
   service: name=smbd state=restarted
+  # when: smbnotify

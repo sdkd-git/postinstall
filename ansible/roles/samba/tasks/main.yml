@@ -5,3 +5,4 @@
   with_items:
     - samba
     - samba-common-bin
+  notify: smbnotify

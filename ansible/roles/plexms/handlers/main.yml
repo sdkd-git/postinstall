@@ -1,0 +1,4 @@
+---
+
+- name: "Ensure Plex is {{ plex.start | ternary('started','stopped') }}"
+  service: name=plexmediaserver state={{ plex.start | ternary('restarted','stopped') }} enabled={{ plex.service_enabled }}

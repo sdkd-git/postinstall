@@ -23,6 +23,3 @@
 
 - name: Install Plex Media Server
   apt: deb="{{ plex_deb_url }}" state=present force=yes
-
-- name: "Ensure Plex is {{ plex.start | ternary('started','stopped') }}"
-  service: name=plexmediaserver state={{ plex.start | ternary('restarted','stopped') }} enabled={{ plex.service_enabled }}

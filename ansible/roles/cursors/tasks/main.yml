@@ -1,10 +1,10 @@
-# ---
-#
-# - name: Git Clone Numix Cursors
-#   git:
-#     repo: https://github.com/sdkd-git/Numix-Cursor-Maia.git
-#     dest: /tmp/postinstall/Numix-Cursor-Maia
-#
+---
+
+- name: Git Clone Numix Cursors
+  git:
+    repo: https://github.com/sdkd-git/Numix-Cursor-Maia.git
+    dest: /tmp/postinstall/Numix-Cursor-Maia
+
 # - name: Install Numix Cursor
 #   command: sh /tmp/postinstall/Numix-Cursor-Maia/install.sh
 
