@@ -8,7 +8,7 @@ aptcachetime: 3600
 #   password_auth: false
 #   root_login: false
 
-#Updated the download URL
+#Updated the download URL's
 
 bleachbit_dwn_url: https://www.bleachbit.org/download/file/t?file=bleachbit_1.12_all_ubuntu1604.deb
 
@@ -21,7 +21,7 @@ stacer_dwn_url: https://netix.dl.sourceforge.net/project/stacer/v1.0.8/Stacer_x8
 vscode_dwn_url: https://az764295.vo.msecnd.net/stable/c63189deaa8e620f650cc28792b8f5f3363f2c5b/code_1.20.0-1518023590_i386.deb
 
 
-#Application State of installing.
+#Application installation state.
 albert:
     repo: present
     install: present
