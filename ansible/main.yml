@@ -9,6 +9,7 @@
 # Server Tools
       # - { role: ssh, become: true }
       # - { role: samba, become: true }
+      # - { role: webmin, become: true }
 # Containerization
       # - { role: docker-io, become: true }
 # Customizing Ubuntu
