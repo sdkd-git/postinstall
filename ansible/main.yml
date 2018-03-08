@@ -10,8 +10,9 @@
       # - { role: ssh, become: true }
       # - { role: samba, become: true }
       # - { role: webmin, become: true }
-# Containerization
+# Containerization / Virtualization
       # - { role: docker-io, become: true }
+      # - { role: virtualbox, become: true }
 # Customizing Ubuntu
       # - { role: cursors, become: true }
       # - { role: wdot, ansible_distribution_release == 'Xenial', become: true }
@@ -22,7 +23,7 @@
 # IDE
       # - { role: vscode, become: true }
       # - { role: eclipse, become: true }
-# Programming/SDK
+# Programming/SDK/Version Control
       # - { role: oraclejdk8, become: true }
       # - { role: androidsdk, become: true }
       # - { role: gitkarken, become: true }
