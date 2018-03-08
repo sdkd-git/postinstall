@@ -25,7 +25,7 @@
 # Programming/SDK
       # - { role: oraclejdk8, become: true }
       # - { role: androidsdk, become: true }
-      # - { role: gitkraken, become: true }
+      # - { role: gitkarken, become: true }
 # Media Server
       # - { role: plexms, become: true }
 # Project Management
