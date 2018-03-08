@@ -7,7 +7,10 @@ LCYAN='\033[1;36m'
 LGRN='\033[1;32m'
 NC='\033[0m' # No Color
 #Variables
-installpkg='ansible git openssh-server'
+installpkg='ansible git curl'
+ansirepo="/etc/apt/sources.list.d/"
+#Generate Log File
+logfile='/tmp/postinstall.log'
 ################################################################################
 cat <<"EOF"
                            (   (        ) (
@@ -16,7 +19,7 @@ cat <<"EOF"
                            /(_))(_))((_)\ /(_))
                           (_))(_))_|_ ((_|_))_
                           / __||   \ |/ / |   \
-                          \__ \| |) |" <  | |) |
+                          \__ \| |) || <  | |) |
                           |___/|___/_|\_\ |___/
 ################################################################################
 Author: Saideep Kavidi
@@ -30,17 +33,16 @@ you begin the installation.
 ################################################################################
 EOF
 ################################################################################
-#Command exits with a nonzero exit value
+# Command exits with a nonzero exit value
 set -e
-#Check is user is running with permission
+# Check is user is running with permission
 if ! [ $(id -u) = 0 ]; then
   echo -e "\n${YLLO}The script need to be run as root.${NC}" >&2
   exit 1
 fi
-#Generate Log File
-logfile='/tmp/postinstall.log'
+#
 echo -e "\n \n \n \n$(date)\n$(uname -nir)\n" >> $logfile
-#check for internet connectivity
+# check for internet connectivity
 echo -e "${LCYAN}Checking internet connectivity\n${NC}"
 pngint="$(ping 8.8.8.8 -c 1 -W 4 -q)"
 if [ $? -eq 0 ];
@@ -57,12 +59,12 @@ then
   exit 3
 fi
 ################################################################################
-#Create Temporary storage directory
+#C  reate Temporary storage directory
 echo -e "${YLLO}Cleaning previous Installation traces${NC}\n"
 rm -rf /tmp/postinstall
 mkdir -p /tmp/postinstall
 ################################################################################
-#Script for auto update/autoremove and dist-upgrade.
+# Script for auto update/autoremove and dist-upgrade.
 apt-get update >> $logfile
 if [ $? = 0 ]; then
   echo -e "${LGRN}Repository update Completed\n"
@@ -70,7 +72,7 @@ else
   echo -e "${RED}Repository Update failed\nExiting Installtion..!\n${NC}" >&2
   exit 4
 fi
-#Disabled for testing purpose
+# Ubuntu upgrade
 apt-get dist-upgrade -y >> $logfile
 if [[ $? = 0 ]]; then
   echo -e "Upgrade completed\n"
@@ -79,19 +81,18 @@ else
   exit 5
 fi
 ################################################################################
-#Repositories
-ansirepo="/etc/apt/sources.list.d/"
-ls $ansirepo | grep 'ansible' > /dev/null
+# Repositories
+ls $ansirepo | grep 'ansible' >& /dev/null
 if [ $? != 0 ]; then
   echo -e "${LGRN}Adding Ansible Repository${NC}\n"
   add-apt-repository -y ppa:ansible/ansible >> $logfile
   if [[ $? != 0 ]]; then
-    echo -e "Error occured while adding repo.\n Please check logs for more details."
+    echo -e "Error occured while adding repo.\n Please check logs $logfile for more details."
     exit 7
   fi
 fi
 apt-get update >> $logfile
-#Install Packages
+# Install Packages
 apt-get install $installpkg -y >> $logfile
 if ! [ $? = 0 ];
   then
@@ -99,18 +100,18 @@ if ! [ $? = 0 ];
     echo -e "${RED} Stopping further actions..!${NC}\n Please check logs for more details." >&2
     exit 6
 fi
-#Check dependency packages and forcw install
+# Check dependency packages and forcw install
 echo -e "${YLLO}Checking and reinstalling for dependency packages${NC}\n"
 apt-get install -f -y >> $logfile
 apt-get autoremove -y >> $logfile
 ################################################################################
-echo -e "Starting Ansible Playbook\n"
-ansible-playbook ansible/main.yml
+echo -e "${LGRN}Starting Ansible Playbook.${NC}\n"
 ################################################################################
-#cleaning TemporaryFiles
+ansible-playbook ansible/main.yml
+# Cleaning TemporaryFiles
 echo -e "${YLLO}Cleaning Apt Cache${NC}"
 apt-get -q clean
 echo -e "${LGRN}APT Cache cleaned\n"
-#Exit Message
+# Exit Message
 # echo -e "${LCYAN}Reboot system for applying changes.\n"
 # echo -e "${YLLO}Thanks for using the script...!\n"

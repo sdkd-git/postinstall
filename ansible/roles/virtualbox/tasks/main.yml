@@ -1,0 +1,12 @@
+---
+- name: Add Oracle key
+  apt_key: https://www.virtualbox.org/download/oracle_vbox_2016.asc
+  state: present
+
+- name: Adding virtualbox repo
+  apt_repository: repo='deb https://download.virtualbox.org/virtualbox/debian "{{ ansible_distribution_release }}" contrib' state=present
+  state: present
+
+- name: Install virtualbox
+  apt: name=virtualbox-5.2
+  state: present

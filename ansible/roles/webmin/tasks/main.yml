@@ -5,11 +5,13 @@
     url: http://www.webmin.com/jcameron-key.asc
     keyring: /etc/apt/trusted.gpg.d/jcameron-key.gpg
     state: present
-  when: ansible_distribution == 'Ubuntu' and ansible_architecture == 'x86_64'
+  when: ansible_distribution == 'Ubuntu'
+  register: webminkey
 
 - name: add Webmin repo
   apt_repository: repo='deb https://download.webmin.com/download/repository sarge contrib' state=present
-- apt_repository: repo=' http://download.webmin.com/download/repository sarge contrib' state=present
+  when: webminkey.changed
+  register: webminrepo
 
 - name: Install Webmin
   apt: name={{ item }} state=present update_cache=yes
@@ -22,3 +24,4 @@
     - libpam-runtime
     - libio-pty-perl
     - apt-show-versions python
+  when: webminrepo.changed
