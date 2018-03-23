@@ -4,6 +4,8 @@
     user: root
     sudo: true
     hosts: localhost
+    any_errors_fatal: false
+    ignore_errors: yes 
     roles:
       # - { role: basic-apps, become: true }
 # Server Tools
@@ -22,11 +24,11 @@
       # - { role: sublimetext3, become: true }
 # IDE
       # - { role: vscode, become: true }
-      # - { role: eclipse, become: true }
+      # - { role: eclipse, become: true, when: ansible_architecture == 'x86_64' }
 # Programming/SDK/Version Control
       # - { role: oraclejdk8, become: true }
       # - { role: androidsdk, become: true }
-      # - { role: gitkarken, become: true }
+      # - { role: gitkarken, become: true, when: ansible_architecture == 'x86_64'  }
 # Media Server
       # - { role: plexms, become: true }
 # Project Management
