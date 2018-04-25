@@ -1,0 +1,12 @@
+---
+
+- name: Add Microsoft Key
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+
+- name: Add MS-SQL 2017 Repo
+  apt_repository: repo='https://packages.microsoft.com/config/ubuntu/16.04/mssql-server-2017.list' state=present
+
+- name: Install MS-SQL 2017
+  apt: name=mssql-server state=present update_cache=yes

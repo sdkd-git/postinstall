@@ -1,7 +1,7 @@
 ---
 
 - name: Visual Studio Code for 32 BIT
-  apt: deb="{{ vscode_dwn_url }}" state=present
+  apt: deb="{{ vscode_ddeb32_url }}" state=present
   when: ansible_distribution == 'Ubuntu' and ansible_architecture == 'i386' or ansible_architecture == 'i686'
 
 - name: signing VS CODE

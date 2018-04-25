@@ -14,11 +14,13 @@ bleachbit_dwn_url: https://www.bleachbit.org/download/file/t?file=bleachbit_1.12
 
 eclipse_dwn: http://ftp.yz.yamagata-u.ac.jp/pub/eclipse/oomph/epp/oxygen/R2/eclipse-inst-linux64.tar.gz
 
-plex_deb_url: https://downloads.plex.tv/plex-media-server/1.10.1.4602-f54242b6b/plexmediaserver_1.10.1.4602-f54242b6b_amd64.deb #CheckSum: b3f40fe8684d708da9c090750a5e3be6f02d8ff8
+plex_deb64_url: https://downloads.plex.tv/plex-media-server/1.12.1.4885-1046ba85f/plexmediaserver_1.12.1.4885-1046ba85f_amd64.deb
 
-stacer_dwn_url: https://netix.dl.sourceforge.net/project/stacer/v1.0.8/Stacer_x86_64_v1.0.8.deb
+plex_deb32_url: https://downloads.plex.tv/plex-media-server/1.12.1.4885-1046ba85f/plexmediaserver_1.12.1.4885-1046ba85f_i386.deb
 
-vscode_dwn_url: https://az764295.vo.msecnd.net/stable/c63189deaa8e620f650cc28792b8f5f3363f2c5b/code_1.20.0-1518023590_i386.deb
+stacer_deb64_url: https://netix.dl.sourceforge.net/project/stacer/v1.0.9/stacer_1.0.9_amd64.deb
+
+vscode_deb32_url: https://az764295.vo.msecnd.net/stable/79b44aa704ce542d8ca4a3cc44cfca566e7720f1/code_1.21.1-1521038898_i386.deb
 
 
 #Application installation state.
