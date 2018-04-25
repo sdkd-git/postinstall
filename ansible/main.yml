@@ -2,55 +2,56 @@
 
   - name: Post-Installation Packages and customization of Ubuntu 16.04 64Bit
     user: root
-    sudo: true
+    become: true
     hosts: localhost
     any_errors_fatal: false
     ignore_errors: yes 
     roles:
-      # - { role: basic-apps, become: true }
+      # - { role: basic-apps }
 # Server Tools
-      # - { role: ssh, become: true }
-      # - { role: samba, become: true }
-      # - { role: webmin, become: true }
+       - { role: ssh }
+       - { role: samba }
+      # - { role: webmin }
 # Containerization / Virtualization
-      # - { role: docker-io, become: true }
-      # - { role: virtualbox, become: true }
+      # - { role: docker-io }
+      # - { role: virtualbox }
 # Customizing Ubuntu
-      # - { role: cursors, become: true }
-      # - { role: wdot, ansible_distribution_release == 'Xenial', become: true }
+      # - { role: cursors }
+      # - { role: wdot, ansible_distribution_release == 'Xenial' }
       # - { role: launchermin }
 # Text editors
-      # - { role: atom, become: true }
-      # - { role: sublimetext3, become: true }
+      # - { role: atom }
+      # - { role: sublimetext3 }
 # IDE
-      # - { role: vscode, become: true }
-      # - { role: eclipse, become: true, when: ansible_architecture == 'x86_64' }
+       - { role: vscode }
+      # - { role: eclipse, when: ansible_architecture == 'x86_64' }
 # Programming/SDK/Version Control
-      # - { role: oraclejdk8, become: true }
-      # - { role: androidsdk, become: true }
-      # - { role: gitkarken, become: true, when: ansible_architecture == 'x86_64'  }
+      # - { role: oraclejdk8 }
+      # - { role: androidsdk }
+      # - { role: gitkarken, when: ansible_architecture == 'x86_64'  }
+      # - { role: mssql, when: ansible_architecture == 'x86_64'  }
 # Media Server
-      # - { role: plexms, become: true }
+      # - { role: plexms }
 # Project Management
-      # - { role: oprjman, become: true, when: ansible_architecture == 'x86_64' }
+      # - { role: oprjman, when: ansible_architecture == 'x86_64' }
 # Desktop/Laptop Utilities
-      # - { role: albert, become: true }
-      # - { role: audioplayer, become: true }
-      # - { role: bleachbit, become: true, ansible_distribution_release == 'Xenial' }
-      # - { role: conkymanager, become: true}
-      # - { role: etcher, become: true }
-      # - { role: greenrecorder, become: true }
-      # - { role: grub-customizer, become: true }
-      # - { role: numix, become: true }
-      # - { role: stacer, become: true }
-      # - { role: teamviewer, become: true }
-      # - { role: vlc, become: true }
+      # - { role: albert }
+      # - { role: audioplayer }
+      # - { role: bleachbit, ansible_distribution_release == 'Xenial' }
+      # - { role: conkymanager}
+      # - { role: etcher }
+      # - { role: greenrecorder }
+      # - { role: grub-customizer }
+      # - { role: numix }
+      # - { role: stacer}
+      # - { role: teamviewer }
+      # - { role: vlc }
 # Internet Utilities
-      # - { role: google-chrome, ansible_architecture == 'x86_64', become: true }
-      # - { role: snap, become: true }
-      # - { role: telegram, become: true }
+       - { role: google-chrome, ansible_architecture == 'x86_64' }
+      # - { role: snap }
+      # - { role: telegram }
 # Power Management
-      # - { role: tlp, become: true }
+      # - { role: tlp }
 # Productivity Tools
-      # - { role: gimp-inkscape, become: true }
-      # - { role: libreoffice, become: true }
+       - { role: gimp-inkscape }
+       - { role: libreoffice }

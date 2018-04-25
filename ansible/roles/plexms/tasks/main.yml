@@ -22,9 +22,9 @@
     - cifs-utils
 
 - name: Install Plex Media Server
-  apt: deb="{{ plex_deb_url }}" state=present force=yes
-  when: ansible_architecture == 'amd64'
+  apt: deb="{{ plex_deb64_url }}" state=present force=yes
+  when: ansible_architecture == 'x86_64'
 
 - name: Install Plex Media Server
-  apt: deb="{{ vscode_dwn_url }}" state=present
+  apt: deb="{{ plex_deb32_url }}" state=present
   when: ansible_distribution == 'Ubuntu' and ansible_architecture == 'i386' or ansible_architecture == 'i686'

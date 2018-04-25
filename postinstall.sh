@@ -1,16 +1,17 @@
 #!/bin/bash
 ################################################################################
 #Set Colour Schemes
-RED='\033[0;31m'
-YLLO='\033[1;33m'
-LCYAN='\033[1;36m'
-LGRN='\033[1;32m'
+RED='\033[0;31m' # RED
+YLLO='\033[1;33m' # Light Yellow
+LCYAN='\033[1;36m' # Light Cyan
+LGRN='\033[1;32m' # Light Green
 NC='\033[0m' # No Color
 #Variables
 installpkg='ansible git curl'
 ansirepo="/etc/apt/sources.list.d/"
 #Generate Log File
-logfile='/tmp/postinstall.log'
+logfile="/tmp/postinstall$RANDOM.log"
+date >> $logfile
 ################################################################################
 cat <<"EOF"
                            (   (        ) (
@@ -41,7 +42,7 @@ if ! [ $(id -u) = 0 ]; then
   exit 1
 fi
 #
-echo -e "\n \n \n \n$(date)\n$(uname -nir)\n" >> $logfile
+echo -e "\n$(date)\n$(uname -nir)\n" >> $logfile
 # check for internet connectivity
 echo -e "${LCYAN}Checking internet connectivity\n${NC}"
 pngint="$(ping 8.8.8.8 -c 1 -W 4 -q)"
@@ -59,7 +60,7 @@ then
   exit 3
 fi
 ################################################################################
-#C  reate Temporary storage directory
+#Create Temporary storage directory
 echo -e "${YLLO}Cleaning previous Installation traces${NC}\n"
 rm -rf /tmp/postinstall
 mkdir -p /tmp/postinstall
@@ -69,7 +70,7 @@ apt-get update >> $logfile
 if [ $? = 0 ]; then
   echo -e "${LGRN}Repository update Completed\n"
 else
-  echo -e "${RED}Repository Update failed\nExiting Installtion..!\n${NC}" >&2
+  echo -e "${RED}Repository Update failed\nExiting Installtion..!\n${NC}"
   exit 4
 fi
 # Ubuntu upgrade
@@ -81,19 +82,14 @@ else
   exit 5
 fi
 ################################################################################
-<<<<<<< HEAD
-#Repositories
-ansirepo="/etc/apt/sources.list.d/"
-ls $ansirepo | grep 'ansible' >> /dev/null
-=======
 # Repositories
 ls $ansirepo | grep 'ansible' >& /dev/null
->>>>>>> 9e00d4ed475779af616249f2f1e2e9a11b1d9ff4
+
 if [ $? != 0 ]; then
   echo -e "${LGRN}Adding Ansible Repository${NC}\n"
   add-apt-repository -y ppa:ansible/ansible >> $logfile
   if [[ $? != 0 ]]; then
-    echo -e "Error occured while adding repo.\n Please check logs $logfile for more details."
+    echo -e "Error occured while adding repo.\n Please check logs at $logfile for more details."
     exit 7
   fi
 fi
@@ -106,23 +102,22 @@ if ! [ $? = 0 ];
     echo -e "${RED} Stopping further actions..!${NC}\n Please check logs for more details." >&2
     exit 6
 fi
-# Check dependency packages and forcw install
+# Check Dependency Packages/Force install/Autoremove
 echo -e "${YLLO}Checking and reinstalling for dependency packages${NC}\n"
 apt-get install -f -y >> $logfile
 apt-get autoremove -y >> $logfile
 ################################################################################
-<<<<<<< HEAD
-echo -e "Starting Ansible Playbook\n"
-ansible-playbook -v ansible/main.yml
-=======
 echo -e "${LGRN}Starting Ansible Playbook.${NC}\n"
->>>>>>> 9e00d4ed475779af616249f2f1e2e9a11b1d9ff4
-################################################################################
 ansible-playbook ansible/main.yml
+exitstate='$?'
 # Cleaning TemporaryFiles
 echo -e "${YLLO}Cleaning Apt Cache${NC}"
 apt-get -q clean
 echo -e "${LGRN}APT Cache cleaned\n"
 # Exit Message
-# echo -e "${LCYAN}Reboot system for applying changes.\n"
-# echo -e "${YLLO}Thanks for using the script...!\n"
+if [[ $exitstat = 0 ]]; then
+  echo -e "${LCYAN}Reboot system for applying changes.\n"
+  echo -e "${YLLO}Thanks for using the script...!\n"
+else
+  echo -e "${RED}Error Occured while installation.\n"
+fi

@@ -1,4 +1,4 @@
 ---
 
 - name: Install Stacer Mordern Linux System Optimizer and Monitoring
-  apt: deb="{{ stacer_dwn_url }}" state=present force=yes
+  apt: deb="{{ stacer_deb64_url }}" state=present force=yes
