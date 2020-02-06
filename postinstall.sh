@@ -81,6 +81,14 @@ else
   echo -e "${RED}Upgrade failed${NC}"
   exit 5
 fi
+# Ubuntu Auto Package removal
+apt-get autoremove -y >> $logfile
+if [[ $? = 0 ]]; then
+  echo -e "Autoremove completed\n"
+else
+  echo -e "${RED}Autoremove failed${NC}"
+  exit 11
+fi
 ################################################################################
 # Repositories
 ls $ansirepo | grep 'ansible' >& /dev/null

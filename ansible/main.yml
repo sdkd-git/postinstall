@@ -11,7 +11,6 @@
 # Server Tools
        - { role: ssh }
        - { role: samba }
-      # - { role: webmin }
 # Containerization / Virtualization
       # - { role: docker-io }
       # - { role: virtualbox }
@@ -24,7 +23,6 @@
       # - { role: sublimetext3 }
 # IDE
        - { role: vscode }
-      # - { role: eclipse, when: ansible_architecture == 'x86_64' }
 # Programming/SDK/Version Control
       # - { role: oraclejdk8 }
       # - { role: androidsdk }
@@ -48,8 +46,6 @@
       # - { role: vlc }
 # Internet Utilities
        - { role: google-chrome, ansible_architecture == 'x86_64' }
-      # - { role: snap }
-      # - { role: telegram }
 # Power Management
       # - { role: tlp }
 # Productivity Tools
